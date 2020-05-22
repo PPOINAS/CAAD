@@ -14,10 +14,10 @@
 String UID_Carte;
 String UID_Autorise[Nombre_chats_max] = {""};   //Liste de chaines de caractères contenant les noms des chats
 String NomsChats_Autorise[Nombre_chats_max] = {""};  //Liste de chaines de caractères contenant les noms des chats
-bool Chat_Interieur[Nombre_chats_max] = {};  //Liste de variables booléenne, true si le chat est à l'interieur, false s'il est à l'extérieur
+bool Chat_Interieur[Nombre_chats_max] = {};  //Liste de variables booléennes, true si le chat est à l'interieur, false s'il est à l'extérieur
 int NbChats_enregistre = 0; //Nombre de chats enregistrés dans la chatière
-String donnees_in;  //Données sous formes de chaine de caractères reçues par Bluetooth
-const int StepsPerRevolution = 2048;  //Nombre de pas par révolution du (moteur pas-à-pas + réducteur)
+String donnees_in;  //Données sous formes d'une chaine de caractères reçues par Bluetooth
+const int StepsPerRevolution = 2048;  //Nombre de pas par révolution du (moteur pas-à-pas + réducteur)  |ici un 28BYJ-48|
 String Heuredistrib = "19:00";  //Heure de distribution définie
 String Temps_actuel; //Chaîne de caractères pour stocker la valeur du temps réel
 bool Verrouillage = false;  //true si chatière verrouillée, false si chatière déverrouillée
@@ -33,10 +33,10 @@ RTC_DS1307 RTC;
 
 void setup() {
   Serial.begin(9600); //Initialisation de la communication avec le PC à 9600 Bauds
-  SPI.begin();      //Initialisation de la communication par bus SPI
+  SPI.begin(); //Initialisation de la communication par bus SPI
   mfrc522.PCD_Init(); //Initialisation du lecteur RFID MFRC522
   pinMode(CapteurInfra, INPUT); //Initialisation du capteur infrarouge FC-51 à l'interieur
-  Servomoteur.attach(8);  //Servomoteur branché sur le pin 8
+  Servomoteur.attach(8); //Servomoteur branché sur le pin 8
   ModuleBT.begin(9600); //Initialisation de la communication avec le HC-05 à 9600 Bauds
   StepperMotor.setSpeed(3);
   Wire.begin();
@@ -125,7 +125,7 @@ void DetectionSortie() {
     }
     while (!(mfrc522.PICC_IsNewCardPresent() && mfrc522.PICC_ReadCardSerial())) {  //Ne fait rien tant qu'une carte n'a pas été détecté (tant que le chat n'est pas sorti)
       DateTime now = RTC.now();
-      if (int(now.minute()) == Minutes + 1){  //Si ça fait 2 min quelle est ouverte et que le chat n'est pas détecter
+      if (int(now.minute()) == Minutes + 1){  //Si ça fait 2 min quelle est ouverte et que le chat n'est pas détecté
         goto FauxPositif; //On considère un faux-positif
       }
     } 
