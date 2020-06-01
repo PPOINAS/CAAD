@@ -6,5 +6,5 @@ Un habitat pour chat connecté comprenant une chatière capable de lire les puce
 Il se peut donc qu'il y ait encore quelques bugs...
 
 Application :
-L'application démarre sur un écran servant à effectuer des tests manuels.
-Les autres onglets sont présents mais ne sont pas encore actifs. Ils seront disponibles prochainement.
+Les données concernant les chats (individuellement) ne sont pas exploitables sur le tableau de bord.
+Les fenêtres concernant les "chats enregistrés", "le verrouillage de la chatière" et "l'heure de distribution de nourriture" sont visibles mais n'échanges pas encore de données avec la carte Arduino.
