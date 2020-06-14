@@ -183,8 +183,8 @@ void Reception_BT() {
         Heuredistrib = donnees_in.substring(1);
         break;
       case 'I' :
-        //Données envoyée sous la forme : {$StatutVerrouillage$Heuredistrib$Alerte$NomchatN°1/StatutChat_InterieurN°1/1$NomchatN°2/StatutChat_InterieurN°2/2$.....}
-        String donnees_out = Verrouillage + "$" + Heuredistrib + "$" + String(Alerte) + "$"; //Création d'une chaine de caractères contenat les données à envoyer par Bluetooth
+        //Données envoyée sous la forme : {$StatutVerrouillage$Heuredistrib$Alerte$NbChatsEnregistrés$NomchatN°1/StatutChat_InterieurN°1/1$NomchatN°2/StatutChat_InterieurN°2/2$.....}
+        String donnees_out = Verrouillage + "$" + Heuredistrib + "$" + String(Alerte) + "$" + String(NbChats_enregistre)+ "$"; //Création d'une chaine de caractères contenat les données à envoyer par Bluetooth
         for (int i = 0; i < Nombre_chats_max-1; i++){
           donnees_out += NomsChats_Autorise[i] + "/" + String(Chat_Interieur[i]) + "/" + String(i);
         }
